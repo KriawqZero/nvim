@@ -1,1 +1,36 @@
-lazy-lock.json
+# ── Vim / Neovim ──────────────────────────────────────────────────────────────
+# Arquivos de swap (gerados se swapfile não estiver desabilitado)
+*.swp
+*.swo
+*.swn
+
+# Arquivos de backup
+*.bak
+*.orig
+
+# Undo persistente (se undodir apontar para dentro da config)
+undodir/
+
+# Spell: palavras personalizadas adicionadas com `zg` ficam aqui
+# São específicas de cada máquina/usuário — não faz sentido commitar
+spell/
+
+# Tags geradas por ctags/cscope
+tags
+TAGS
+
+# ── Luacheck / ferramentas de dev local ───────────────────────────────────────
+.luarc.json
+.luacheckrc
+
+# ── Sistema operacional ───────────────────────────────────────────────────────
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+Desktop.ini
+
+# ── IDEs e editores externos ──────────────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
