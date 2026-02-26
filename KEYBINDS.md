@@ -25,7 +25,7 @@ Referência completa de todos os atalhos: built-ins do Neovim, customizações e
 - [Command mode](#command-mode)
 - [Customizações globais](#customizações-globais)
 - [LSP](#lsp)
-- [Telescope](#telescope)
+- [Telescope & Projetos](#telescope--projetos)
 - [nvim-tree](#nvim-tree)
 - [nvim-cmp (autocompletar)](#nvim-cmp-autocompletar)
 - [Treesitter (seleção incremental)](#treesitter-seleção-incremental)
@@ -520,9 +520,10 @@ Definidos em `lua/config/keymaps.lua`. Funcionam quando um servidor LSP está at
 
 ---
 
-## Telescope
+## Telescope & Projetos
 
-Plugin: `nvim-telescope/telescope.nvim` · Arquivo: `lua/plugins/telescope.lua`
+Plugins: `nvim-telescope/telescope.nvim` · `ahmedkhalf/project.nvim`
+Arquivos: `lua/plugins/telescope.lua` · `lua/plugins/projects.lua`
 
 Lazy-loaded: carrega apenas quando um desses keybinds é pressionado.
 
@@ -534,6 +535,12 @@ Lazy-loaded: carrega apenas quando um desses keybinds é pressionado.
 | `<leader>fg` | n | Busca texto em todos os arquivos (live grep com `rg`) |
 | `<leader>fb` | n | Lista e busca entre os buffers abertos |
 | `<leader>fh` | n | Busca nos help tags do Neovim |
+| `<leader>fp` | n | Lista projetos recentes (Telescope projects) |
+| `<leader>fo` | n | Abre input para digitar/completar qualquer pasta como root |
+
+> **`<leader>fp`** mostra todos os projetos detectados. Ao selecionar, o cwd muda e o nvim-tree abre na nova raiz automaticamente.
+>
+> **`<leader>fo`** aceita `~`, caminhos relativos e absolutos. Tab completa o diretório.
 
 ### Keybinds dentro do Telescope
 
@@ -700,10 +707,12 @@ Plugin: `CopilotC-Nvim/CopilotChat.nvim` · Arquivo: `lua/plugins/copilot.lua`
 
 Plugin: `goolord/alpha-nvim` · Arquivo: `lua/plugins/dashboard.lua`
 
-Aberto automaticamente ao iniciar `nvim` sem arquivos.
+Aberto automaticamente ao iniciar `nvim` sem arquivos. É o ponto de entrada para o fluxo de trabalho por projetos.
 
 | Tecla | O que faz |
 |---|---|
+| `p` | Lista projetos recentes — selecione para abrir direto na raiz |
+| `o` | Input para abrir qualquer pasta (Tab completa o caminho) |
 | `f` | Abre o Telescope para buscar arquivos |
 | `r` | Abre o Telescope com arquivos recentes |
 | `g` | Abre o Telescope com live grep |
@@ -711,6 +720,8 @@ Aberto automaticamente ao iniciar `nvim` sem arquivos.
 | `c` | Abre o `init.lua` (configuração do KriawqVim) |
 | `l` | Abre a UI do lazy.nvim (`:Lazy`) |
 | `q` | Sai do Neovim |
+
+> Ao pressionar `p` ou `o` e confirmar uma pasta, o nvim-tree abre automaticamente na raiz do projeto escolhido.
 
 ---
 

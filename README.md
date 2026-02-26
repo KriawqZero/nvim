@@ -143,6 +143,7 @@ O script termina com um resumo colorido mostrando o que foi instalado e o que es
 │       ├── cmp.lua             ← autocompletar (nvim-cmp)
 │       ├── treesitter.lua      ← syntax avançada
 │       ├── telescope.lua       ← busca de arquivos e texto
+│       ├── projects.lua        ← projetos recentes (project.nvim)
 │       ├── nvim-tree.lua       ← explorador de arquivos
 │       ├── ui.lua              ← lualine, bufferline, barbecue, ibl, notify
 │       ├── editor.lua          ← autoclose, toggleterm, conform, none-ls
@@ -189,6 +190,7 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 |---|---|
 | `nvim-tree/nvim-tree.lua` | Explorador de arquivos lateral |
 | `nvim-telescope/telescope.nvim` | Busca fuzzy de arquivos, texto, buffers |
+| `ahmedkhalf/project.nvim` | Histórico de projetos, detecção automática de root |
 
 ### LSP & Autocompletar
 | Plugin | Função |
@@ -266,7 +268,7 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 | `<leader>e` | Abrir diagnóstico flutuante |
 | `[d` / `]d` | Diagnóstico anterior / próximo |
 
-### Telescope
+### Telescope & Projetos
 
 | Keybind | Ação |
 |---|---|
@@ -274,6 +276,8 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 | `<leader>fg` | Buscar texto no projeto (live grep) |
 | `<leader>fb` | Buscar buffers abertos |
 | `<leader>fh` | Buscar help tags |
+| `<leader>fp` | Projetos recentes (Telescope projects) |
+| `<leader>fo` | Abrir pasta arbitrária como root |
 
 ### nvim-tree
 
@@ -328,6 +332,8 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 
 | Tecla | Ação |
 |---|---|
+| `p` | Projetos recentes (`Telescope projects`) |
+| `o` | Abrir pasta com input + autocomplete |
 | `f` | Buscar arquivo |
 | `r` | Arquivos recentes |
 | `g` | Buscar no projeto |
@@ -335,6 +341,31 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 | `c` | Abrir configuração (`init.lua`) |
 | `l` | Abrir `:Lazy` |
 | `q` | Sair |
+
+---
+
+## Projetos recentes (project.nvim)
+
+O `project.nvim` rastreia os projetos que você abre e detecta automaticamente a raiz de cada projeto via LSP ou por padrões de arquivo (`.git`, `package.json`, `Cargo.toml`, etc.).
+
+### Fluxo de uso
+
+| Situação | Ação |
+|---|---|
+| Abrir um projeto recente | Dashboard → `p` ou `<leader>fp` |
+| Abrir qualquer pasta como root | Dashboard → `o` ou `<leader>fo` (input com Tab para completar) |
+| Navegar para outro projeto sem fechar | `<leader>fp` e seleciona na lista |
+
+Ao selecionar um projeto, o cwd muda automaticamente e o nvim-tree abre na nova raiz — comportamento idêntico ao VS Code / Cursor.
+
+### Detecção automática de root
+
+Ao abrir qualquer arquivo, o plugin identifica a raiz do projeto procurando:
+
+```
+.git  .gitignore  package.json  Cargo.toml  go.mod
+pyproject.toml  Makefile  CMakeLists.txt  composer.json  .nvimrc
+```
 
 ---
 

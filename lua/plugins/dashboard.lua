@@ -22,6 +22,8 @@ return {
 
       -- ── Botões ────────────────────────────────────────────────────────────
       dashboard.section.buttons.val = {
+        dashboard.button('p', '  Projetos recentes',  '<cmd>Telescope projects<CR>'),
+        dashboard.button('o', '  Abrir pasta...',     '<cmd>KriawqOpenFolder<CR>'),
         dashboard.button('f', '  Buscar arquivo',     '<cmd>Telescope find_files<CR>'),
         dashboard.button('r', '  Recentes',           '<cmd>Telescope oldfiles<CR>'),
         dashboard.button('g', '  Buscar no projeto',  '<cmd>Telescope live_grep<CR>'),

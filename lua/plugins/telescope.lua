@@ -20,6 +20,9 @@ return {
           },
         },
       })
+
+      -- Dispara evento para que project.nvim registre a extensão
+      vim.api.nvim_exec_autocmds('User', { pattern = 'TelescopeLoaded' })
     end,
   },
 }

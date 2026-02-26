@@ -31,6 +31,10 @@ map('n', 'O',     'o<Esc>k',       opts)          -- linha abaixo sem entrar no 
 map('n', 't',     'ko',            opts)          -- linha acima (abre acima da atual)
 map('n', '<Tab>', 'i<Tab>',        opts)          -- tab em normal mode → insert + tab
 
+-- ── Projetos ──────────────────────────────────────────────────────────────────
+map('n', '<leader>fp', '<cmd>Telescope projects<CR>',  opts)  -- projetos recentes
+map('n', '<leader>fo', '<cmd>KriawqOpenFolder<CR>',    opts)  -- abrir pasta arbitrária
+
 -- ── LSP ───────────────────────────────────────────────────────────────────────
 map('n', 'gr',         vim.lsp.buf.references,                                  opts)
 map('n', 'K',          vim.lsp.buf.hover,                                        opts)
