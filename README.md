@@ -7,7 +7,7 @@
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝╚═╝  ╚═╝ ╚══╝╚══╝  ╚══▀▀═╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 ```
 
-> ** Minha config pessoal feita do zero, 100% Lua, sem starter kits.**
+>  Minha config pessoal feita do zero, 100% Lua, sem starter kits.
 
 ---
 
@@ -30,10 +30,13 @@ KriawqVim é a minha configuração pessoal do Neovim. Foi construída manualmen
 mv ~/.config/nvim ~/.config/nvim.bak
 
 # 2. Clone a config
-git clone <seu-repositório> ~/.config/nvim
+git clone https://github.com/KriawqZero/nvim ~/.config/nvim
 
-# 3. Instale as dependências de sistema
-cd ~/.config/nvim && bash install-deps.sh
+# 3. Marcar instalador como executável 
+cd ~/.config/nvim && chmod +x install-deps.sh
+
+# 4. Instale as dependências de sistema
+sudo ./install-deps.sh
 
 # 4. Abra o Neovim — lazy.nvim instala os plugins automaticamente
 nvim
@@ -119,6 +122,7 @@ O script termina com um resumo colorido mostrando o que foi instalado e o que es
 ~/.config/nvim/
 ├── init.lua                    ← entry point: define leader, carrega os módulos
 ├── README.md                   ← documentação
+├── KEYBINDS.md                 ← referência completa de atalhos
 ├── install-deps.sh             ← instalador de dependências de sistema
 ├── lazy-lock.json              ← versões fixas dos plugins (commitar!)
 │
@@ -223,6 +227,8 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 ## Keybinds
 
 `<leader>` = `Espaço`
+
+> Referência completa com explicação de cada keybind (built-ins + plugins): **[KEYBINDS.md](./KEYBINDS.md)**
 
 ### Globais
 
