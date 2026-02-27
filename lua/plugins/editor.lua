@@ -55,27 +55,6 @@ return {
     end,
   },
 
-  -- ── Linters / code actions externos via LSP ─────────────────────────────
-  -- none-ls complementa o LSP com diagnósticos e code actions de ferramentas externas.
-  -- Adicione fontes conforme os formatadores/linters instalados no sistema.
-  {
-    'nvimtools/none-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    event        = { 'BufReadPre', 'BufNewFile' },
-    config       = function()
-      local null_ls = require('null-ls')
-      local sources = {}
-
-      -- Adiciona eslint apenas se o binário estiver instalado
-      if vim.fn.executable('eslint') == 1 then
-        table.insert(sources, null_ls.builtins.diagnostics.eslint)
-        table.insert(sources, null_ls.builtins.code_actions.eslint)
-      end
-
-      null_ls.setup({ sources = sources })
-    end,
-  },
-
   -- ── Comentários rápidos ──────────────────────────────────────────────────
   {
     'terrortylor/nvim-comment',

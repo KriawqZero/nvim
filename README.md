@@ -10,6 +10,18 @@
 
 ---
 
+## Screenshots
+
+| Dashboard | Editor |
+|:---:|:---:|
+| ![Dashboard](assets/example2.png) | ![Editor](assets/example1.png) |
+
+| lazy.nvim — plugins | lazy.nvim — update | lazy.nvim — startup |
+|:---:|:---:|:---:|
+| ![Lazy home](assets/example3.png) | ![Lazy update](assets/example4.png) | ![Lazy profile](assets/example5.png) |
+
+---
+
 ## Sobre
 
 KriawqVim é a minha configuração pessoal do Neovim. Foi construída manualmente, sem depender de distribuições como LazyVim ou AstroVim, com o objetivo de ter controle total sobre cada detalhe do editor.
