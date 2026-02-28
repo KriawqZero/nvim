@@ -3,6 +3,9 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+    },
     config = function()
       require('nvim-treesitter.install').prefer_git = false
       require('nvim-treesitter.install').compilers   = { 'clang', 'gcc', 'g++' }
@@ -31,6 +34,7 @@ return {
             scope_incremental = 'grc',
           },
         },
+        autotag = { enable = true },
       })
     end,
   },

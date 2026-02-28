@@ -1,6 +1,7 @@
 return {
   {
     'nvim-tree/nvim-tree.lua',
+    lazy         = false,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     keys = {
       { '<C-a>',     '<cmd>NvimTreeToggle<CR>',   desc = 'Abrir/fechar explorer' },
@@ -8,15 +9,19 @@ return {
       { '<leader>n', '<cmd>NvimTreeFindFile<CR>', desc = 'Localizar arquivo na árvore' },
     },
     config = function()
-      -- Abre nvim-tree automaticamente ao abrir nvim com um diretório
-      -- ex: nvim ~/.config/nvim  →  abre o explorer na pasta correta
---      vim.api.nvim_create_autocmd('VimEnter', {
- --       callback = function(data)
-  --        if vim.fn.isdirectory(data.file) ~= 1 then return end
-   --       vim.cmd.cd(data.file)
-    --      require('nvim-tree.api').tree.open()
-     --   end,
-     -- })
+      -- nvim ~/pasta   → cd na pasta, abre tree
+      -- nvim ~/arquivo → cd na pasta do arquivo, abre tree com arquivo focado
+      vim.api.nvim_create_autocmd('VimEnter', {
+        once     = true,
+        callback = function(data)
+          if vim.fn.isdirectory(data.file) == 1 then
+            vim.cmd.cd(data.file)
+            require('nvim-tree.api').tree.open()
+          elseif vim.fn.filereadable(data.file) == 1 then
+            vim.cmd.cd(vim.fn.fnamemodify(data.file, ':h'))
+          end
+        end,
+      })
 
       require('nvim-tree').setup({
         sort_by           = 'case_sensitive',

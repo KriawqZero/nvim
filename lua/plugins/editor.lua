@@ -64,6 +64,53 @@ return {
     end,
   },
 
+  -- ── Surround (aspas/tags/parênteses ao redor de texto) ───────────────────
+  {
+    'kylechui/nvim-surround',
+    event  = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup()
+    end,
+  },
+
+  -- ── Lista de diagnósticos e references (LSP, qflist, loclist) ────────────
+  {
+    'folke/trouble.nvim',
+    cmd  = 'Trouble',
+    keys = {
+      { '<leader>xx', '<cmd>Trouble diagnostics toggle<CR>', desc = 'Diagnósticos (workspace)' },
+      { '<leader>xX', '<cmd>Trouble diagnostics toggle filter.buf=0<CR>', desc = 'Diagnósticos (buffer)' },
+      { '<leader>cs', '<cmd>Trouble symbols toggle focus=false<CR>', desc = 'Símbolos do arquivo' },
+      { '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.position=right<CR>', desc = 'LSP definitions/references' },
+      { '<leader>xL', '<cmd>Trouble loclist toggle<CR>', desc = 'Location List' },
+      { '<leader>xQ', '<cmd>Trouble qflist toggle<CR>', desc = 'Quickfix List' },
+    },
+    config = function()
+      require('trouble').setup()
+    end,
+  },
+
+  -- ── Colorizer (preview de cores hex/rgb/hsl/tailwind classes) ─────────────
+  {
+    'NvChad/nvim-colorizer.lua',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('colorizer').setup({
+        '*',
+        css = { rgb_fn = true, hsl_fn = true, names = true },
+        scss = { rgb_fn = true, hsl_fn = true, names = true },
+        html = { names = true },
+        javascript = { names = true },
+        typescript = { names = true },
+        lua = { names = false },
+      }, {
+        css = true,
+        tailwind = true,
+        mode = 'background',
+      })
+    end,
+  },
+
   -- ── Suporte a Prisma ORM ─────────────────────────────────────────────────
   {
     'prisma/vim-prisma',

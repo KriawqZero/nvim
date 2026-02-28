@@ -4,7 +4,8 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('lualine.cat_lualine')
+      --require('lualine.cat_lualine')
+      require('lualine.evil_lualine')
     end,
   },
 
@@ -23,7 +24,8 @@ return {
     'utilyre/barbecue.nvim',
     dependencies = { 'SmiteshP/nvim-navic', 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require('barbecue').setup({ theme = 'catppuccin' })
+      --require('barbecue').setup({ theme = 'catppuccin' })
+      require('barbecue').setup({ theme = 'monokai-pro' })
     end,
   },
 
@@ -33,23 +35,23 @@ return {
     main  = 'ibl',
     event = 'BufReadPost',
     config = function()
-      vim.api.nvim_set_hl(0, 'IndentBlanklineChar',        { fg = '#cccccc', nocombine = true })
-      vim.api.nvim_set_hl(0, 'IndentBlanklineContextChar', { fg = '#aaaaaa', nocombine = true })
-
-      require('ibl').setup({
-        indent = {
-          char      = '│',
-          highlight = 'IndentBlanklineChar',
-        },
-        scope = {
-          show_start = false,
-          show_end   = false,
-          highlight  = { 'IndentBlanklineContextChar' },
-        },
-        exclude = {
-          filetypes = { 'help', 'dashboard', 'lazy', 'mason' },
-        },
-      })
+      -- vim.api.nvim_set_hl(0, 'IndentBlanklineChar',        { fg = '#cccccc', nocombine = true })
+      -- vim.api.nvim_set_hl(0, 'IndentBlanklineContextChar', { fg = '#aaaaaa', nocombine = true })
+      --
+      -- require('ibl').setup({
+      --   indent = {
+      --     char      = '│',
+      --     highlight = 'IndentBlanklineChar',
+      --   },
+      --   scope = {
+      --     show_start = false,
+      --     show_end   = false,
+      --     highlight  = { 'IndentBlanklineContextChar' },
+      --   },
+      --   exclude = {
+      --     filetypes = { 'help', 'dashboard', 'lazy', 'mason' },
+      --   },
+      -- })
     end,
   },
 

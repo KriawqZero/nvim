@@ -11,6 +11,7 @@ return {
       'hrsh7th/vim-vsnip',
       'petertriho/cmp-git',
       'zbirenbaum/copilot-cmp',
+      'roobert/tailwindcss-colorizer-cmp.nvim',
     },
     config = function()
       local cmp          = require('cmp')
@@ -37,6 +38,13 @@ return {
         }),
         formatting = {
           fields = { 'abbr', 'kind', 'menu' },
+          format = function(entry, item)
+            local ok, tw = pcall(require, 'tailwindcss-colorizer-cmp')
+            if ok then
+              item = tw.formatter(entry, item)
+            end
+            return item
+          end,
         },
         experimental = {
           ghost_text = true,
@@ -50,6 +58,21 @@ return {
       -- Aplicar capacidades LSP via cmp a todos os servidores
       local capabilities = cmp_nvim_lsp.default_capabilities()
       vim.lsp.config('*', { capabilities = capabilities })
+
+      -- Completion no command-line
+      cmp.setup.cmdline('/', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = { { name = 'buffer' } },
+      })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          { name = 'cmdline' },
+        }),
+      })
     end,
   },
 }

@@ -5,7 +5,6 @@
 *.swn
 
 # Arquivos de backup
-*.bak
 *.orig
 
 # Undo persistente (se undodir apontar para dentro da config)
