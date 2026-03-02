@@ -30,6 +30,8 @@ Referência completa de todos os atalhos: built-ins do Neovim, customizações e
 - [nvim-cmp (autocompletar)](#nvim-cmp-autocompletar)
 - [Treesitter (seleção incremental)](#treesitter-seleção-incremental)
 - [Comentários (nvim-comment)](#comentários-nvim-comment)
+- [Surround (nvim-surround)](#surround-nvim-surround)
+- [Trouble (diagnósticos)](#trouble-diagnósticos)
 - [Terminal (toggleterm)](#terminal-toggleterm)
 - [Copilot & CopilotChat](#copilot--copilotchat)
 - [Dashboard (alpha-nvim)](#dashboard-alpha-nvim)
@@ -605,9 +607,12 @@ Ativo no Insert mode quando o menu de sugestões está aberto.
 | `<CR>` | i | Aceita a sugestão selecionada |
 | `<C-n>` | i | Próxima sugestão |
 | `<C-p>` | i | Sugestão anterior |
-| `<Tab>` | i | *(padrão do cmp: avança pela sugestão / expande snippet)* |
+| `<Tab>` | i/s | Próxima sugestão; se não houver menu, expande/pula snippet |
+| `<S-Tab>` | i/s | Sugestão anterior; se estiver em snippet, volta para placeholder anterior |
 
 > Sugestões do Copilot aparecem no topo da lista com o ícone ``.
+>
+> Command-line completion também está ativo: `/` usa fonte de buffer e `:` usa `path` + `cmdline`.
 
 ---
 
@@ -646,6 +651,42 @@ Plugin: `terrortylor/nvim-comment` · Arquivo: `lua/plugins/editor.lua`
 | `gco` | n | Adiciona comentário na linha abaixo |
 | `gcO` | n | Adiciona comentário na linha acima |
 | `gcA` | n | Adiciona comentário no fim da linha atual |
+
+---
+
+## Surround (nvim-surround)
+
+Plugin: `kylechui/nvim-surround` · Arquivo: `lua/plugins/editor.lua`
+
+Atalhos padrão do plugin (não remapeados). Funciona em qualquer linguagem/texto.
+
+| Keybind | Modo | O que faz |
+|---|---|---|
+| `ys{motion}{char}` | n | Adiciona surround em um motion (ex: `ysiw"` envolve palavra com aspas) |
+| `yss{char}` | n | Adiciona surround na linha inteira |
+| `ds{char}` | n | Remove um surround (ex: `ds"` remove aspas) |
+| `cs{old}{new}` | n | Troca um surround por outro (ex: `cs"'`) |
+| `S{char}` | v | Envolve seleção visual com o delimitador |
+| `gS{char}` | v | Envolve seleção visual em modo linewise |
+
+Exemplo para JSX/HTML:
+- `dst` remove a tag em volta do cursor
+- `cst<div>` troca a tag atual para `div`
+
+---
+
+## Trouble (diagnósticos)
+
+Plugin: `folke/trouble.nvim` · Arquivo: `lua/plugins/editor.lua`
+
+| Keybind | Modo | O que faz |
+|---|---|---|
+| `<leader>xx` | n | Toggle diagnósticos do workspace |
+| `<leader>xX` | n | Toggle diagnósticos só do buffer atual |
+| `<leader>cs` | n | Símbolos do arquivo atual |
+| `<leader>cl` | n | Definições/referências do LSP |
+| `<leader>xL` | n | Toggle Location List |
+| `<leader>xQ` | n | Toggle Quickfix List |
 
 ---
 

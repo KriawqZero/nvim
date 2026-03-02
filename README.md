@@ -94,7 +94,7 @@ Ao iniciar, pergunta o modo:
 - Rust via rustup (com `clippy` e `rustfmt`)
 
 **Servidores LSP (via npm):**
-`intelephense` · `typescript-language-server` · `eslint` · `pyright` · `vscode-langservers-extracted` (HTML/CSS/JSON)
+`intelephense` · `typescript-language-server` · `eslint` · `tailwindcss-language-server` · `pyright` · `vscode-langservers-extracted` (HTML/CSS/JSON)
 
 **Formatadores:**
 `prettier` · `stylua` · `black` · `blade-formatter` · `gofmt/gofumpt` · `rustfmt` · `php-cs-fixer` (se composer disponível)
@@ -157,7 +157,7 @@ O script termina com um resumo colorido mostrando o que foi instalado e o que es
 │       ├── projects.lua        ← projetos recentes (project.nvim)
 │       ├── nvim-tree.lua       ← explorador de arquivos
 │       ├── ui.lua              ← lualine, bufferline, barbecue, ibl, notify
-│       ├── editor.lua          ← autoclose, toggleterm, conform, none-ls
+│       ├── editor.lua          ← edição: conform, comments, surround, trouble, colorizer
 │       └── copilot.lua         ← GitHub Copilot + CopilotChat
 │
 └── after/
@@ -211,11 +211,15 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 | `hrsh7th/cmp-nvim-lsp` | Fonte LSP para o cmp |
 | `hrsh7th/cmp-buffer` | Fonte: texto do buffer atual |
 | `hrsh7th/cmp-path` | Fonte: caminhos de arquivos |
-| `hrsh7th/vim-vsnip` | Snippets |
+| `L3MON4D3/LuaSnip` | Engine de snippets |
+| `rafamadriz/friendly-snippets` | Biblioteca de snippets prontos (multi-linguagem) |
+| `saadparwaiz1/cmp_luasnip` | Integração LuaSnip com nvim-cmp |
+| `roobert/tailwindcss-colorizer-cmp.nvim` | Preview de cores/classes Tailwind no completion |
 | `nvim-treesitter/nvim-treesitter` | Syntax highlighting avançada + indentação |
+| `windwp/nvim-ts-autotag` | Fecha/renomeia tags automaticamente |
 
 ### Servidores LSP ativos
-`intelephense` · `html` · `cssls` · `ts_ls` · `eslint` · `rust_analyzer` · `gopls` · `clangd` · `pyright`
+`intelephense` · `html` · `cssls` · `tailwindcss` · `ts_ls` · `eslint` · `rust_analyzer` · `gopls` · `clangd` · `pyright`
 
 ### Editor
 | Plugin | Função |
@@ -223,8 +227,10 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 | `m4xshen/autoclose.nvim` | Fecha `(`, `[`, `{`, `"` automaticamente |
 | `akinsho/toggleterm.nvim` | Terminal embutido |
 | `stevearc/conform.nvim` | Formatação de código por filetype |
-| `nvimtools/none-ls.nvim` | Diagnósticos e code actions externos |
 | `terrortylor/nvim-comment` | Comentários rápidos (`gcc`, `gc`) |
+| `kylechui/nvim-surround` | Manipular aspas/tags/parênteses ao redor de texto |
+| `folke/trouble.nvim` | Painel de diagnósticos, references e quickfix |
+| `NvChad/nvim-colorizer.lua` | Preview de cores (hex/rgb/hsl/Tailwind) |
 | `prisma/vim-prisma` | Suporte a Prisma ORM |
 | `wakatime/vim-wakatime` | Rastreamento de tempo de codificação |
 
@@ -278,6 +284,17 @@ flavour = 'macchiato',  -- latte | frappe | macchiato | mocha
 | `<C-f>` | Formatar arquivo |
 | `<leader>e` | Abrir diagnóstico flutuante |
 | `[d` / `]d` | Diagnóstico anterior / próximo |
+
+### Trouble (lista de diagnósticos)
+
+| Keybind | Ação |
+|---|---|
+| `<leader>xx` | Diagnósticos do workspace |
+| `<leader>xX` | Diagnósticos só do buffer atual |
+| `<leader>cs` | Símbolos do arquivo atual |
+| `<leader>cl` | Definições/referências do LSP |
+| `<leader>xL` | Location list |
+| `<leader>xQ` | Quickfix list |
 
 ### Telescope & Projetos
 
