@@ -14,7 +14,7 @@
 
 | Dashboard | Editor |
 |:---:|:---:|
-| ![Dashboard](assets/example2.png) | ![Editor](assets/example1.png) |
+| ![Dashboard](assets/example1.png) | ![Editor](assets/example2.png) |
 
 | lazy.nvim — plugins | lazy.nvim — update | lazy.nvim — startup |
 |:---:|:---:|:---:|

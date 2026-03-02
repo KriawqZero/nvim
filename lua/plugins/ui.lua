@@ -4,8 +4,15 @@ return {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      --require('lualine.cat_lualine')
-      require('lualine.evil_lualine')
+      require('lualine.auto').setup()
+
+      -- Reaplica o tema da statusline sempre que o colorscheme mudar
+      -- (ex.: trocando pelo Themery).
+      vim.api.nvim_create_autocmd('ColorScheme', {
+        callback = function()
+          require('lualine.auto').setup()
+        end,
+      })
     end,
   },
 

@@ -22,6 +22,8 @@ map('n', '<S-w>', '<cmd>bd<CR>',        opts)
 map('n', '<C-s>', '<cmd>w<CR>',          opts)
 map('i', '<C-s>', '<Esc><cmd>w<CR>a',    opts)
 map('v', '<C-s>', '<Esc><cmd>w<CR>gv',   opts)
+map('n', '<C-S-p>', '<cmd>Themery<CR>',  opts) -- abrir seletor de tema
+map('n', '<C-S-l>', '<cmd>Lazy<CR>',     opts) -- abrir lazy.nvim
 
 -- ── Edição ────────────────────────────────────────────────────────────────────
 map('n', '<Esc>', '<cmd>noh<CR>',  opts)          -- limpa destaque de busca
